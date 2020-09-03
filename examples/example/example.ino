@@ -14,7 +14,7 @@ void setup()
     adc.inputMux(ADS1x1x::ConfigMux::SINGLE_0);
     adc.gain(ADS1x1x::ConfigPGA::FSR_4_096V);
     adc.mode(ADS1x1x::ConfigMode::CONTINUOUS);
-    adc.datarate(ADS1x1x::ConfigDR::DR_1600_SPS);
+    adc.datarate(ADS1x1x::ConfigDR::DR_12B_1600_SPS);
     adc.compMode(ADS1x1x::ConfigCompMode::TRADITIONAL);
     adc.compPol(ADS1x1x::ConfigCompPol::ACTIVE_L);
     adc.compLatch(ADS1x1x::ConfigCompLatch::DISABLE);

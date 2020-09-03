@@ -148,13 +148,23 @@ enum class ConfigMode : uint8_t
 
 enum class ConfigDR : uint8_t
 {
-    DR_0128_SPS,
-    DR_0250_SPS,
-    DR_0490_SPS,
-    DR_0920_SPS,
-    DR_1600_SPS, // default
-    DR_2400_SPS,
-    DR_3300_SPS
+    // for 12bit model
+    DR_12B_0128_SPS = 0x00,
+    DR_12B_0250_SPS,
+    DR_12B_0490_SPS,
+    DR_12B_0920_SPS,
+    DR_12B_1600_SPS, // default
+    DR_12B_2400_SPS,
+    DR_12B_3300_SPS,
+    // for 16bit model
+    DR_16B_0008_SPS = 0x00,
+    DR_16B_0016_SPS,
+    DR_16B_0032_SPS,
+    DR_16B_0064_SPS,
+    DR_16B_0128_SPS, // default
+    DR_16B_0250_SPS,
+    DR_16B_0475_SPS,
+    DR_16B_0860_SPS
 };
 
 enum class ConfigCompMode : uint8_t

@@ -85,13 +85,23 @@ enum class ConfigMode : uint8_t
 
 enum class ConfigDR : uint8_t
 {
-    DR_0128_SPS,
-    DR_0250_SPS,
-    DR_0490_SPS,
-    DR_0920_SPS,
-    DR_1600_SPS, // default
-    DR_2400_SPS,
-    DR_3300_SPS
+    // for 12bit model
+    DR_12B_0128_SPS = 0x00,
+    DR_12B_0250_SPS,
+    DR_12B_0490_SPS,
+    DR_12B_0920_SPS,
+    DR_12B_1600_SPS, // default
+    DR_12B_2400_SPS,
+    DR_12B_3300_SPS,
+    // for 16bit model
+    DR_16B_0008_SPS = 0x00,
+    DR_16B_0016_SPS,
+    DR_16B_0032_SPS,
+    DR_16B_0064_SPS,
+    DR_16B_0128_SPS, // default
+    DR_16B_0250_SPS,
+    DR_16B_0475_SPS,
+    DR_16B_0860_SPS
 };
 
 enum class ConfigCompMode : uint8_t
@@ -128,7 +138,7 @@ class Ads1x1x
     uint8_t status_;
 
     ConfigPGA pga { ConfigPGA::FSR_2_048V }; // TODO: temporary
-    ConfigDR dr { ConfigDR::DR_1600_SPS }; // TODO: temporary
+    ConfigDR dr { ConfigDR::DR_12B_1600_SPS }; // TODO: temporary
 
 public:
 
@@ -309,16 +319,34 @@ public:
 
     uint32_t conversionDelayUs() const
     {
-        switch (dr)
+        if (N_RESOLUTION == 12)
         {
-            case ConfigDR::DR_0128_SPS: return 1000000 / 128;
-            case ConfigDR::DR_0250_SPS: return 1000000 / 250;
-            case ConfigDR::DR_0490_SPS: return 1000000 / 490;
-            case ConfigDR::DR_0920_SPS: return 1000000 / 920;
-            case ConfigDR::DR_1600_SPS: return 1000000 / 1600;
-            case ConfigDR::DR_2400_SPS: return 1000000 / 2400;
-            case ConfigDR::DR_3300_SPS: return 1000000 / 3300;
-            default:                    return 1000000 / 1600;
+            switch (dr)
+            {
+                case ConfigDR::DR_12B_0128_SPS: return 1000000 / 128;
+                case ConfigDR::DR_12B_0250_SPS: return 1000000 / 250;
+                case ConfigDR::DR_12B_0490_SPS: return 1000000 / 490;
+                case ConfigDR::DR_12B_0920_SPS: return 1000000 / 920;
+                case ConfigDR::DR_12B_1600_SPS: return 1000000 / 1600;
+                case ConfigDR::DR_12B_2400_SPS: return 1000000 / 2400;
+                case ConfigDR::DR_12B_3300_SPS: return 1000000 / 3300;
+                default:                        return 0;
+            }
+        }
+        else
+        {
+            switch (dr)
+            {
+                case ConfigDR::DR_16B_0008_SPS: return 1000000 / 8;
+                case ConfigDR::DR_16B_0016_SPS: return 1000000 / 16;
+                case ConfigDR::DR_16B_0032_SPS: return 1000000 / 32;
+                case ConfigDR::DR_16B_0064_SPS: return 1000000 / 64;
+                case ConfigDR::DR_16B_0128_SPS: return 1000000 / 128;
+                case ConfigDR::DR_16B_0250_SPS: return 1000000 / 250;
+                case ConfigDR::DR_16B_0475_SPS: return 1000000 / 475;
+                case ConfigDR::DR_16B_0860_SPS: return 1000000 / 860;
+                default:                        return 0;
+            }
         }
     }
 
