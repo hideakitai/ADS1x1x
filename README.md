@@ -5,11 +5,9 @@ Arduino library for ADS101x / ADS111x Ultra-Small, Low-Power, I2C-Compatible, AD
 
 ## Supported ICs
 
-- [ADS1018](https://www.ti.com/product/ADS1018)
 - [ADS1015](https://www.ti.com/product/ADS1015)
 - [ADS1014](https://www.ti.com/product/ADS1014)
 - [ADS1013](https://www.ti.com/product/ADS1013)
-- [ADS1118](https://www.ti.com/product/ADS1118)
 - [ADS1115](https://www.ti.com/product/ADS1115)
 - [ADS1114](https://www.ti.com/product/ADS1114)
 - [ADS1113](https://www.ti.com/product/ADS1113)
